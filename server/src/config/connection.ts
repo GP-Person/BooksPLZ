@@ -1,23 +1,17 @@
 import dotenv from 'dotenv';
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 
 import mongoose from 'mongoose';
 
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/googlebooks';
+const MONGO_URI = process.env.MONGODB_URI;
 
-(async () => {
-  try {
-    // Connect to the MongoDB database
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('Successfully connected to MongoDB');
-  } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
-    process.exit(1); // Exit process if connection fails
-  }
-})();
+if (!MONGO_URI) {
+    throw new Error("MONGODB_URI is not defined in environment variables");
+}
+
+mongoose.connect(MONGO_URI)
+    .then(() => console.log('Connected to MongoDB Atlas'))
+    .catch((err) => console.error('Error connecting to MongoDB:', err));
 
 const db = mongoose.connection;
 
