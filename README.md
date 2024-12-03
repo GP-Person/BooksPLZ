@@ -23,9 +23,9 @@ Run the app on https://booksplz.onrender.com/
 
 ## Tech Stack
 
-**Client:** React, HTML, CSS, Typescript, Vite
+**Client:** React, HTML, CSS, Typescript, Vite, GraphQL
 
-**Server:** Node, Express, MongoDB, Mongoose
+**Server:** Node, Express, MongoDB, Mongoose, Apollo
 
 
 ## 🚀 About Me
